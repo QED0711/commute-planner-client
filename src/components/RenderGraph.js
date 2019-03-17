@@ -25,7 +25,7 @@ class RenderGraph extends Component {
     render(){
         const {parsedData} = this.props
         const {currentDataPoint} = this.state
-        const timeOfDay = `${Math.floor(currentDataPoint.x/12)}:${currentDataPoint.x % 12}`
+        const timeOfDay = `${Math.floor(((currentDataPoint.x) * 5) / 60)}:${((currentDataPoint.x) * 5) % 60}` 
         const commuteTime = `${Math.floor(currentDataPoint.y/60)}:${Math.floor(currentDataPoint.y % 60)}`
         return(
             <div className="graph-box">
