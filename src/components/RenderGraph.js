@@ -42,7 +42,7 @@ class RenderGraph extends Component {
                     yDomainRange={[0, parsedData.maxTime + 10]}
                     margin={{top: 10, right: 10, bottom: 50, left: 50}}
                     axisLabels={{x: 'My x Axis', y: 'My y Axis'}}
-                    interpolate={'cardinal'}
+                    // interpolate={'cardinal'}
                     height={500}
                     width={1500}
                     data={[
