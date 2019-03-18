@@ -6,7 +6,10 @@ import {NEW_ROUTE} from '../queries/mutations';
 
 class NewRouteForm extends Component {
     
-
+    resetForm(){
+        document.getElementById("new-route-origin").value = ""
+        document.getElementById("new-route-destination").value = ""
+    }
 
     render(){
         return(
@@ -20,7 +23,12 @@ class NewRouteForm extends Component {
                         return(
                             <form classNme="new-route-form" onSubmit={e => {
                                 e.preventDefault()
-                                console.log("submitted")
+                                const origin = document.getElementById("new-route-origin").value
+                                const destination = document.getElementById("new-route-destination").value
+                                const routeData = {origin, destination}
+                                newRoute({variables: routeData})
+                                this.resetForm();
+                                
                             }}>
                                 <h2>Define A New Route</h2>
                                 <label for="new-route-origin">Origin</label><br/>
