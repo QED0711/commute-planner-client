@@ -7,11 +7,11 @@ class RenderGraph extends Component {
 
         this.state = {
             currentDataPoint: {x: null, y: null},
-            showDataPoints: true,
-            smoothGraph: true
+            showDataPoints: false,
         }
 
         this.setCurrentDataPoint = this.setCurrentDataPoint.bind(this);
+        this.handleToggleDataPoints = this.handleToggleDataPoints.bind(this);
     }
 
     setCurrentDataPoint(dataPoint){
@@ -24,6 +24,19 @@ class RenderGraph extends Component {
         }
     }
 
+    handleToggleDataPoints(){
+        const dataPointsButton = document.getElementById("toggle-datapoints");
+
+        if(dataPointsButton.innerText === "Show Data Points"){
+            dataPointsButton.innerText = "Remove Data Points"
+        } else {
+            dataPointsButton.innerText = "Show Data Points"
+        }
+
+        const showDataPoints = !this.state.showDataPoints;
+        this.setState({showDataPoints})
+    }
+
     render(){
         const {parsedData} = this.props
         const {currentDataPoint} = this.state
@@ -31,12 +44,12 @@ class RenderGraph extends Component {
         const commuteTime = `${Math.floor(currentDataPoint.y/60)}:${Math.floor(currentDataPoint.y % 60)}`
         return(
             <div className="graph-box">
+                <button id="toggle-datapoints" onClick={this.handleToggleDataPoints}>Show Data Points</button>
                 <h3>Time of Day: {timeOfDay} | Commute Time: {commuteTime}</h3>
                 <AreaChart 
                     axes
                     grid
                     dataPoints={this.state.showDataPoints}
-                    // interpolate={'cardinal'}
                     mouseOverHandler={this.mouseOverHandler(this.setCurrentDataPoint)}
                     noAreaGradient
                     areaColors={['#00B2EE']}
