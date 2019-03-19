@@ -31,10 +31,10 @@ class NewRouteForm extends Component {
                             }}>
                                 <h2>Define A New Route</h2>
                                 <label for="new-route-origin">Origin</label><br/>
-                                <input type="text" id="new-route-origin"/><br/>
+                                <input type="text" id="new-route-origin" required/><br/>
                                 
                                 <label for="new-route-destination">Destination</label><br/>
-                                <input type="text" id="new-route-destination"/><br/>
+                                <input type="text" id="new-route-destination" required/><br/>
         
                                 <input type="submit" value="Create Route"/>
                             </form>

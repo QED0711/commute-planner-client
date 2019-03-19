@@ -28,7 +28,7 @@ class RenderGraph extends Component {
         const dataPointsButton = document.getElementById("toggle-datapoints");
 
         if(dataPointsButton.innerText === "Show Data Points"){
-            dataPointsButton.innerText = "Remove Data Points"
+            dataPointsButton.innerText = "Hide Data Points"
         } else {
             dataPointsButton.innerText = "Show Data Points"
         }

@@ -48,7 +48,6 @@ class CurrentRoute extends Component {
                                 const parsedData = this.parseTimesData(route.times)
                                 return(
                                     <div>
-                                        <h3>{route.origin} | {route.destination}</h3>
                                         <RenderGraph parsedData={parsedData} />
                                     </div>
                                 )
