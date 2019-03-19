@@ -27,9 +27,14 @@ class RunCommuteQueries extends Component {
                             console.log(data);
                         }
                         return(
-                            <form className="run-commute-queries-form" onSubmit={e => {
+                            <form id="run-commute-queries-form" className="button-form" onSubmit={e => {
                                 e.preventDefault();
                                 this.startQueryInterval(runAllCommutes);
+                                
+                                let submitButton = document.getElementById("run-commute-queries-form").children[0]
+                                submitButton.className = "button-active" 
+                                submitButton.value = "Actively Timing Commutes (refresh to stop)"
+                                submitButton.disabled = true; 
                             }}>
                                 <input type="submit" value="Run Commute Queries" />
                             </form>
