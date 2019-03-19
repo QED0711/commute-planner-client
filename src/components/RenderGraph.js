@@ -6,7 +6,9 @@ class RenderGraph extends Component {
         super(props);
 
         this.state = {
-            currentDataPoint: {x: null, y: null}
+            currentDataPoint: {x: null, y: null},
+            showDataPoints: true,
+            smoothGraph: true
         }
 
         this.setCurrentDataPoint = this.setCurrentDataPoint.bind(this);
@@ -33,7 +35,8 @@ class RenderGraph extends Component {
                 <AreaChart 
                     axes
                     grid
-                    dataPoints
+                    dataPoints={this.state.showDataPoints}
+                    // interpolate={'cardinal'}
                     mouseOverHandler={this.mouseOverHandler(this.setCurrentDataPoint)}
                     noAreaGradient
                     areaColors={['#00B2EE']}
@@ -42,7 +45,6 @@ class RenderGraph extends Component {
                     yDomainRange={[0, parsedData.maxTime + 10]}
                     margin={{top: 10, right: 10, bottom: 50, left: 50}}
                     axisLabels={{x: 'My x Axis', y: 'My y Axis'}}
-                    // interpolate={'cardinal'}
                     height={500}
                     width={1500}
                     data={[

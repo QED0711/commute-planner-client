@@ -44,8 +44,8 @@ class CurrentRoute extends Component {
                             if(data.route){
                                 const {route} = data;
                                 // REPLACE TEST DATA WITH ACTUAL DATA
-                                const parsedData = this.parseTimesData(testData())
-                                // const parsedData = this.parseTimesData(route.times)
+                                // const parsedData = this.parseTimesData(testData())
+                                const parsedData = this.parseTimesData(route.times)
                                 return(
                                     <div>
                                         <h3>{route.origin} | {route.destination}</h3>
