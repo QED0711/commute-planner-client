@@ -1,23 +1,42 @@
 import React, {Component} from 'react';
 
 import {Mutation} from 'react-apollo';
+import {RUN_ALL_COMMUTES} from '../queries/mutations';
 
 class RunCommuteQueries extends Component {
 
 
-    startQueryInterval(){
+    startQueryInterval(runAllCommutes){
         setInterval(() => {
             let d = new Date();
             let currentMinute = (d.getHours() * 60) + (d.getMinutes())
             console.log(currentMinute)
-        }, 1000)
+            currentMinute = currentMinute.toString()
+            if(currentMinute % 5 === 0){
+                runAllCommutes({variables: {currentMinute}})
+            }
+        }, 60000)
     }
 
     render(){
         return(
-            <div className="run-commute-queries-buttons">
-                <button onClick={this.startQueryInterval}>Run Commute Queries</button>
-            </div>
+            <Mutation mutation={RUN_ALL_COMMUTES}>
+                {
+                    (runAllCommutes, {data}) => {
+                        if(data){
+                            console.log(data);
+                        }
+                        return(
+                            <form className="run-commute-queries-form" onSubmit={e => {
+                                e.preventDefault();
+                                this.startQueryInterval(runAllCommutes);
+                            }}>
+                                <input type="submit" value="Run Commute Queries" />
+                            </form>
+                        )
+                    }
+                }
+            </Mutation>
         )
     }
 }
